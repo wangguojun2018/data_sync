@@ -1,0 +1,24 @@
+<launch>
+  <arg name="cloud_topic" default="/rslidar_points"/>
+  <arg name="image_topic" default="/foreground_points"/>
+  <arg name="fix_topic" default="/foreground_points_filtered"/>
+  <arg name="odom_topic" default="/detected_objects_points"/>
+
+  <arg name="cloud_dir" default="/detected_range_objects"/>
+  <arg name="image_dir" default="/tracked_range_objects"/>
+  <arg name="odom_dir" default="/roadside_cam_array"/>
+
+
+ 
+  <node pkg="data_sync" type="data_sync_node" name="data_sync_node" output="screen">
+   <param name="cloud_topic" type="string" value="$(arg cloud_topic)" />
+   <param name="image_topic" type="string" value="$(arg image_topic)" />
+   <param name="fix_topic" type="string" value="$(arg fix_topic)" />
+   <param name="odom_topic" type="string" value="$(arg odom_topic)" />
+   <param name="cloud_dir" type="string" value="$(arg cloud_dir)" />
+   <param name="image_dir" type="string" value="$(arg image_dir)" />
+   <param name="odom_dir" type="string" value="$(arg odom_dir)" />
+  </node>
+  <!--node pkg="rosbag" type="play" name="playbag" args="/home/wgj/dataset/roadside/indoor/2020-03-16-16-28-40.bag -l"/-->
+  
+</launch>
